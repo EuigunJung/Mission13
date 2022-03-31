@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Add Form";
+}
+
+@model Bowler
+
+<h1> Create a new bowler information!</h1>
+
+<form method="post" class="form-group">
+    <div asp-validation-summary="All"></div>
+
+    <label asp-for="BowlerFirstName"> First Name: </label>
+    <input asp-for="BowlerFirstName" class="form-control" />
+    <br />
+    <label asp-for="BowlerMiddleInit"> Middle Name Initial: (leave blank if you don't have one) </label>
+    <input asp-for="BowlerMiddleInit" class="form-control" />
+    <br />
+    <label asp-for="BowlerLastName"> Last Name: </label>
+    <input asp-for="BowlerLastName" class="form-control" />
+    <br />
+    <label asp-for="BowlerAddress"> Address: </label>
+    <input asp-for="BowlerAddress" class="form-control" />
+    <br />
+    <label asp-for="BowlerCity"> City: </label>
+    <input asp-for="BowlerCity" class="form-control" />
+    <br />
+    <label asp-for="BowlerState"> State: (Use 2 abbreviated letters: Utah - UT, Arizona - AZ)  </label>
+    <input asp-for="BowlerState" class="form-control" />
+    <br />
+    <label asp-for="BowlerZip"> ZIP (5 digits): </label>
+    <input asp-for="BowlerZip" class="form-control" />
+    <br />
+    <label asp-for="BowlerPhoneNumber"> Phone Number: (ex. (385)286-9492) </label>
+    <input asp-for="BowlerPhoneNumber" class="form-control" />
+    <br />
+    <label asp-for="TeamID"> Select Your Team: </label>
+    <select asp-for="TeamID" class="form-control">
+        @foreach (Team t in ViewBag.Teams)
+         {
+            <option value="@t.TeamID">@t.TeamName</option>
+         }
+    </select>
+    <br />
+
+    <button class="btn" type="submit">Submit</button>
+
+</form>

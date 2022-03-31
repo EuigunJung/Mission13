@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Bowler>
+
+<h1>Bowlers List - @ViewBag.TeamName</h1>
+<br/>
+<a asp-action="ResponseForm" class="btn btn-success"> Click here to Create a new bowler information!</a>
+<br/>
+<br/>
+<table class="table table-sm table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Initial</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>ZIP</th>
+            <th>Phone Nmber</th>     
+            <th>Edit</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model?.Count() > 0)
+        {
+            foreach (var i in Model)
+                {
+                 <tr>
+                    <td>@i.BowlerFirstName</td>
+                    <td>@i.BowlerMiddleInit</td>
+                    <td>@i.BowlerLastName</td>
+                    <td>@i.BowlerAddress</td>
+                    <td>@i.BowlerCity</td>
+                    <td>@i.BowlerState</td>
+                    <td>@i.BowlerZip</td>
+                    <td>@i.BowlerPhoneNumber</td>
+                    <td><a class="btn btn-info" asp-action="Edit" asp-route-bID="@i.BowlerID">Edit </a></td>
+                    <td><a class="btn btn-danger" asp-action="Remove" asp-route-bID="@i.BowlerID">Remove </a></td>
+                 </tr>
+                }
+        }
+    </tbody>
+
+</table>
